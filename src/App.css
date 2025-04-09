@@ -88,7 +88,8 @@ fieldset {
 }
 
 .tips {
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   margin-top: 12px;
 }
@@ -108,7 +109,7 @@ button.active {
   color: hsl(183, 100%, 15%);
 }
 
-.tips input {
+input.custom-input {
   background-image: none;
   margin-top: 0;
   height: 40px;
@@ -193,4 +194,68 @@ aside p.min {
   font-size: 20px;
   cursor: pointer;
   margin: 30px;
+}
+
+@media (width < 850px) {
+  body {
+    width: 100vw;
+    min-height: 100vh;
+    display: block;
+  }
+
+  main {
+    min-height: 100vh;
+    margin-top: 70px;
+  }
+
+  .calc {
+    flex-direction: column;
+    align-items: center;
+    width: 375px;
+    height: 700px;
+    border-radius: 30px 30px 0 0;
+  }
+
+  .form-sec {
+    width: 80%;
+    margin: 0;
+    margin-top: 30px;
+  }
+
+  input.custom-input {
+    font-size: 18px;
+  }
+
+  .result {
+    width: 90%;
+    height: 270px;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
+  article.value {
+    padding: 20px;
+    padding-bottom: 0;
+  }
+
+  article.value h2 {
+    font-size: 16px;
+  }
+
+  .value aside p {
+    font-size: 34px;
+  }
+
+  img.dollar-icon {
+    width: 18px;
+    height: 28px;
+  } 
+
+  button.reset {
+    margin: 20px;
+  }
+
+  article.value {
+    flex-wrap: wrap;
+  }
 }
