@@ -57,14 +57,14 @@ main {
 }
 
 .bill-input {
-  background-image: url(../public/images/icon-dollar.svg);
+  background-image: url(/images/icon-dollar.svg);
   background-size: 12px;
   background-repeat: no-repeat;
   background-position: 12px center;
 }
 
 .people-input {
-  background-image: url(../public/images/icon-person.svg);
+  background-image: url(/images/icon-person.svg);
   background-size: 12px;
   background-repeat: no-repeat;
   background-position: 12px center;

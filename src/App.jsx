@@ -56,7 +56,7 @@ export function App () {
 
   return (
     <main>
-      <img src='/public/images/logo.svg' alt='logo' />
+      <img src='/images/logo.svg' alt='logo' />
       <section className='calc'>
         <section className='form-sec'>
           <form>

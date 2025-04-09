@@ -9,7 +9,7 @@ export function Value ({ name, value }) {
       </div>
       <aside>
         <img
-          src='/public/images/icon-dollar.svg'
+          src='/images/icon-dollar.svg'
           alt='dollar icon'
           className={`dollar-icon ${min}`}
         />
