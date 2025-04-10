@@ -1,46 +1,24 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { Value } from './components/Value'
 import { TipButton } from './components/TipButton'
-import { defaultValues, percentage } from './components/logic/constants'
+import { percentage } from './components/logic/constants'
+import { useValues } from './hooks/useValues'
 import './App.css'
 
 export function App () {
-  const [amount, setAmount] = useState(0)
-  const [total, setTotal] = useState(0)
-  const [values, setValues] = useState(defaultValues)
-
-  const updateValues = (event) => {
-    const { name, value } = event.target
-    const newValue = Number(value)
-
-    setValues((prev) => ({
-      ...prev,
-      [name]: newValue
-    }))
-  }
+  const { updateValues, amount, total, values } = useValues()
 
   const handleClick = (event) => {
-    updateValues(event)
+    const { name, value } = event.target
+    updateValues({ name, value })
   }
 
   const handleChange = (event) => {
     const { name, value } = event.target
     if (value.length > 8 && name === 'bill') return
     if (value.length > 2 && name === 'tip') return
-    updateValues(event)
+    updateValues({ name, value })
   }
-
-  useEffect(() => {
-    const { bill, tip, people } = values
-    if (people === 0) return
-    const tipAmount = (tip / 100) * bill
-    const aproxAmount = Math.floor(tipAmount / people)
-    setAmount(aproxAmount)
-
-    const newTotal = (bill + tipAmount) / people
-    const aproxTotal = Math.floor(newTotal)
-    setTotal(aproxTotal)
-  }, [values])
 
   const newButtons = useMemo(() => {
     return percentage.map((n) => (
@@ -106,9 +84,7 @@ export function App () {
             className='reset'
             disabled={values.bill === 0 && values.tip === 0 && values.people === 0}
             onClick={() => {
-              setValues(defaultValues)
-              setAmount(0)
-              setTotal(0)
+              updateValues({ name: '', value: -1 })
             }}
           >
             RESET
