@@ -111,6 +111,7 @@ export function App () {
           </div>
           <button
             className='reset'
+            disabled={values.bill === 0 && values.tip === 0 && values.people === 0}
             onClick={() => {
               setValues(defaultValues)
               setAmount(0)

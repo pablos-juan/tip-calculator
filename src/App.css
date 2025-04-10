@@ -201,6 +201,12 @@ aside p.min {
   margin: 30px;
 }
 
+.reset:disabled {
+  opacity: 0.2;
+  background-color: hsl(172, 67%, 45%);
+  cursor: not-allowed;
+}
+
 @media (width < 850px) {
   body {
     width: 100vw;
