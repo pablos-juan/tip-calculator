@@ -112,6 +112,7 @@ fieldset {
 button.active {
   background-color: hsl(185, 41%, 84%);
   color: hsl(183, 100%, 15%);
+  border: 1px hsl(183, 100%, 15%) solid;
 }
 
 input.custom-input {
