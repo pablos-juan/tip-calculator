@@ -1,15 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Value } from './components/Value'
 import { TipButton } from './components/TipButton'
+import { defaultValues, percentage } from './components/logic/constants'
 import './App.css'
-
-const defaultValues = {
-  bill: 0,
-  tip: 0,
-  people: 0
-}
-
-const percentage = [5, 10, 15, 25, 50]
 
 export function App () {
   const [amount, setAmount] = useState(0)
