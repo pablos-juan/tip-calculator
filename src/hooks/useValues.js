@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { defaultValues } from '../components/logic/constants'
+import { defaultValues } from '../logic/constants'
 
 export function useValues () {
   const [values, setValues] = useState(defaultValues)

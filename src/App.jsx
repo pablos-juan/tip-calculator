@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { Value } from './components/Value'
 import { TipButton } from './components/TipButton'
-import { percentage } from './components/logic/constants'
+import { percentage } from './logic/constants'
 import { useValues } from './hooks/useValues'
 import './App.css'
 
