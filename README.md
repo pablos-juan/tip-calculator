@@ -47,5 +47,4 @@ Durante el desarrollo enfrenté algunos desafíos, especialmente en la parte ló
 
 ## todo
 
-- Posible cutom hook en el estado de `values`.
 - Mejorar el `useMemo`.
