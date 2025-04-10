@@ -9,6 +9,8 @@ const defaultValues = {
   people: 0
 }
 
+const percentage = [5, 10, 15, 25, 50]
+
 export function App () {
   const [amount, setAmount] = useState(0)
   const [total, setTotal] = useState(0)
@@ -29,6 +31,9 @@ export function App () {
   }
 
   const handleChange = (event) => {
+    const { name, value } = event.target
+    if (value.length > 8 && name === 'bill') return
+    if (value.length > 2 && name === 'tip') return
     updateValues(event)
   }
 
@@ -36,14 +41,15 @@ export function App () {
     const { bill, tip, people } = values
     if (people === 0) return
     const tipAmount = (tip / 100) * bill
-    setAmount(tipAmount / people)
+    const aproxAmount = Math.floor(tipAmount / people)
+    setAmount(aproxAmount)
 
     const newTotal = (bill + tipAmount) / people
-    setTotal(newTotal)
+    const aproxTotal = Math.floor(newTotal)
+    setTotal(aproxTotal)
   }, [values])
 
   const newButtons = useMemo(() => {
-    const percentage = [5, 10, 15, 25, 50]
     return percentage.map((n) => (
       <TipButton
         value={n}
@@ -80,7 +86,7 @@ export function App () {
                   placeholder='Custom'
                   className='custom-input'
                   name='tip'
-                  /* value={customTip} */
+                  value={percentage.includes(values.tip) || values.tip === 0 ? '' : values.tip}
                   onChange={handleChange}
                 />
               </div>
