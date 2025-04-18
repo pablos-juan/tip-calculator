@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { Value } from './components/Value'
 import { TipButton } from './components/TipButton'
-import { percentage } from './logic/constants'
+import { PERCENTAGE } from './logic/constants'
 import { useValues } from './hooks/useValues'
 import './App.css'
 
@@ -21,7 +21,7 @@ export function App () {
   }
 
   const newButtons = useMemo(() => {
-    return percentage.map((n) => (
+    return PERCENTAGE.map((n) => (
       <TipButton
         value={n}
         key={n}
@@ -57,7 +57,7 @@ export function App () {
                   placeholder='Custom'
                   className='custom-input'
                   name='tip'
-                  value={percentage.includes(values.tip) || values.tip === 0 ? '' : values.tip}
+                  value={PERCENTAGE.includes(values.tip) || values.tip === 0 ? '' : values.tip}
                   onChange={handleChange}
                 />
               </div>
@@ -84,7 +84,8 @@ export function App () {
             className='reset'
             disabled={values.bill === 0 && values.tip === 0 && values.people === 0}
             onClick={() => {
-              updateValues({ name: '', value: -1 })
+              updateValues({ name: 'value', value: -1 })
+              window.localStorage.removeItem('values')
             }}
           >
             RESET

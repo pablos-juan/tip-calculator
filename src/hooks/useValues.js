@@ -1,19 +1,29 @@
 import { useState, useEffect } from 'react'
-import { defaultValues } from '../logic/constants'
+import { DEFAULT_VALUES } from '../logic/constants'
 
 export function useValues () {
-  const [values, setValues] = useState(defaultValues)
+  const [values, setValues] = useState(() => {
+    const dataFromStorage = window.localStorage.getItem('values')
+    console.log(dataFromStorage)
+    return dataFromStorage ? JSON.parse(dataFromStorage) : DEFAULT_VALUES
+  })
   const [amount, setAmount] = useState(0)
   const [total, setTotal] = useState(0)
 
   const updateValues = ({ name, value }) => {
     const newValue = Number(value)
     if (value === -1) {
-      setValues(defaultValues)
+      setValues(DEFAULT_VALUES)
       setAmount(0)
       setTotal(0)
     }
 
+    const newValues = {
+      ...values,
+      [name]: newValue
+    }
+
+    window.localStorage.setItem('values', JSON.stringify(newValues))
     setValues((prev) => ({
       ...prev,
       [name]: newValue
