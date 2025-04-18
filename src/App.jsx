@@ -4,6 +4,7 @@ import { TipButton } from './components/TipButton'
 import { PERCENTAGE } from './logic/constants'
 import { useValues } from './hooks/useValues'
 import './App.css'
+import { Logo } from './components/Logo'
 
 export function App () {
   const { updateValues, amount, total, values } = useValues()
@@ -33,7 +34,7 @@ export function App () {
 
   return (
     <main>
-      <img src='/images/logo.svg' alt='logo' />
+      <Logo />
       <section className='calc'>
         <section className='form-sec'>
           <form>

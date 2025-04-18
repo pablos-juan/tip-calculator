@@ -4,7 +4,6 @@ import { DEFAULT_VALUES } from '../logic/constants'
 export function useValues () {
   const [values, setValues] = useState(() => {
     const dataFromStorage = window.localStorage.getItem('values')
-    console.log(dataFromStorage)
     return dataFromStorage ? JSON.parse(dataFromStorage) : DEFAULT_VALUES
   })
   const [amount, setAmount] = useState(0)
