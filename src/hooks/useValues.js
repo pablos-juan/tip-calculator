@@ -33,7 +33,7 @@ export function useValues () {
     const { bill, tip, people } = values
     if (people === 0) return
     const tipAmount = (tip / 100) * bill
-    const aproxAmount = Math.floor(tipAmount / people)
+    const aproxAmount = parseFloat((tipAmount / people).toFixed(2))
     setAmount(aproxAmount)
 
     const newTotal = (bill + tipAmount) / people
