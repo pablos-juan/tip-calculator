@@ -79,6 +79,9 @@ main {
 
 .fav {
   display: flex;
+  height: 26px;
+  justify-content: right;
+  align-items: center;
   gap: 6px;
 }
 
@@ -223,16 +226,7 @@ aside p.min {
   font-size: 20px;
   cursor: pointer;
   width: 100%;
-}
-
-.reset-min {
-  height: 42px;
-  background-color: var(--color-accent);
-  border-radius: 5px;
-  border: none;
-  color: var(--color-primary);
-  font-size: 20px;
-  cursor: pointer;
+  width: calc(100% - 52px);
 }
 
 .second-button {
@@ -240,6 +234,7 @@ aside p.min {
   justify-content: center;
   align-items: center;
   height: 42px;
+  width: 42px;
   padding: 10px;
   background-color: var(--color-primary);
   color: var(--color-accent);
