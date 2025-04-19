@@ -226,6 +226,16 @@ aside p.min {
   font-size: 20px;
   cursor: pointer;
   width: 100%;
+}
+
+.reset-min {
+  height: 42px;
+  background-color: var(--color-accent);
+  border-radius: 5px;
+  border: none;
+  color: var(--color-primary);
+  font-size: 20px;
+  cursor: pointer;
   width: calc(100% - 52px);
 }
 
