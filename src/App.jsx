@@ -1,13 +1,17 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { Value } from './components/Value'
 import { TipButton } from './components/TipButton'
 import { PERCENTAGE } from './logic/constants'
 import { useValues } from './hooks/useValues'
 import './App.css'
-import { Logo } from './components/Logo'
+import { Favs } from './components/Favs'
 
 export function App () {
   const { updateValues, amount, total, values } = useValues()
+  const [fav, setFav] = useState(() => {
+    const favFromStorage = window.localStorage.getItem('fav')
+    return favFromStorage ? JSON.parse(favFromStorage) : []
+  })
 
   const handleClick = (event) => {
     const { name, value } = event.target
@@ -19,6 +23,16 @@ export function App () {
     if (value.length > 8 && name === 'bill') return
     if (value.length > 2 && name === 'tip') return
     updateValues({ name, value })
+  }
+
+  const handleFav = () => {
+    if (
+      fav.some(f => f.tip === values.tip && f.people === values.people) ||
+      fav.length > 2
+    ) return
+    const { tip, people } = values
+    setFav(prev => [...prev, { tip, people }])
+    window.localStorage.setItem('fav', JSON.stringify([...fav, { tip, people }]))
   }
 
   const newButtons = useMemo(() => {
@@ -34,7 +48,6 @@ export function App () {
 
   return (
     <main>
-      <Logo />
       <section className='calc'>
         <section className='form-sec'>
           <form>
@@ -47,6 +60,10 @@ export function App () {
               className='bill-input'
               onChange={handleChange}
             />
+
+            {fav.length > 0 && (
+              <Favs favs={fav} updateValues={updateValues} updateFav={setFav} />
+            )}
 
             <fieldset>
               <label>Select Tip %</label>
@@ -77,20 +94,29 @@ export function App () {
         </section>
 
         <section className='result'>
-          <div>
+          <article>
             <Value value={amount} name='Tip Amount' />
             <Value value={total} name='Total' />
+          </article>
+          <div className='buttons'>
+            <button
+              className={values.length < 1 ? 'reset-min' : 'reset'}
+              disabled={values.bill === 0 && values.tip === 0 && values.people === 0}
+              onClick={() => {
+                updateValues({ name: 'value', value: -1 })
+                window.localStorage.removeItem('values')
+              }}
+            >
+              RESET
+            </button>
+
+            {values.bill > 0 &&
+              <button
+                className='second-button'
+                onClick={handleFav}
+              >♡
+              </button>}
           </div>
-          <button
-            className='reset'
-            disabled={values.bill === 0 && values.tip === 0 && values.people === 0}
-            onClick={() => {
-              updateValues({ name: 'value', value: -1 })
-              window.localStorage.removeItem('values')
-            }}
-          >
-            RESET
-          </button>
         </section>
       </section>
     </main>

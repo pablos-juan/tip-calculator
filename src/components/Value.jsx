@@ -1,6 +1,7 @@
 export function Value ({ name, value }) {
   const len = value.toString().length
   const min = len > 5 ? 'min' : ''
+
   return (
     <article className='value'>
       <div>

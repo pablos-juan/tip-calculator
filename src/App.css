@@ -1,11 +1,11 @@
 /* Variables de colores */
 :root {
-  --color-background: hsl(185, 41%, 84%);
-  --color-primary: hsl(183, 100%, 15%);
-  --color-secondary: hsl(186, 14%, 43%);
-  --color-accent: hsl(172, 67%, 45%);
-  --color-light: hsl(189, 47%, 97%);
-  --color-muted: hsl(184, 14%, 56%);
+  --color-background: #c5e4e7;
+  --color-primary: #00494d;
+  --color-secondary: #5e7a7d;
+  --color-accent: #26c0ab;
+  --color-light: #f4fafb;
+  --color-muted: #7f9c9f;
   --color-white: white;
 }
 
@@ -74,6 +74,12 @@ main {
   background-size: 12px;
   background-repeat: no-repeat;
   background-position: 12px center;
+  margin-bottom: 6px;
+}
+
+.fav {
+  display: flex;
+  gap: 6px;
 }
 
 .people-input {
@@ -100,7 +106,7 @@ input::placeholder {
 }
 
 fieldset {
-  margin-block: 28px;
+  margin-block: 18px;
   border: none;
 }
 
@@ -108,7 +114,7 @@ fieldset {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  margin-top: 12px;
+  margin-top: 6px;
 }
 
 .tips button {
@@ -148,6 +154,7 @@ input.custom-input {
   background-color: var(--color-primary);
   border-radius: 15px;
   margin: 30px 30px 30px 0;
+  padding: 23px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -158,8 +165,6 @@ input.custom-input {
   justify-content: space-between;
   align-items: center;
   color: var(--color-white);
-  padding: 30px;
-  padding-bottom: 0;
 }
 
 .value div {
@@ -203,6 +208,12 @@ aside p.min {
   height: 28px;
 }
 
+.buttons {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
 .reset {
   height: 42px;
   background-color: var(--color-accent);
@@ -211,7 +222,31 @@ aside p.min {
   color: var(--color-primary);
   font-size: 20px;
   cursor: pointer;
-  margin: 30px;
+  width: 100%;
+}
+
+.reset-min {
+  height: 42px;
+  background-color: var(--color-accent);
+  border-radius: 5px;
+  border: none;
+  color: var(--color-primary);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.second-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  padding: 10px;
+  background-color: var(--color-primary);
+  color: var(--color-accent);
+  font-size: 20px;
+  cursor: pointer;
+  border: 2px solid;
+  border-radius: 100%;
 }
 
 .reset:disabled {
@@ -238,6 +273,7 @@ aside p.min {
     width: 375px;
     height: 700px;
     border-radius: 30px 30px 0 0;
+    gap: 20px;
   }
 
   .form-sec {
@@ -252,14 +288,9 @@ aside p.min {
 
   .result {
     width: 90%;
-    height: 270px;
+    height: 300px;
     margin: 0;
     margin-bottom: 20px;
-  }
-
-  article.value {
-    padding: 20px;
-    padding-bottom: 0;
   }
 
   article.value h2 {
@@ -273,13 +304,15 @@ aside p.min {
   img.dollar-icon {
     width: 18px;
     height: 28px;
-  } 
-
-  button.reset {
-    margin: 20px;
   }
 
-  article.value {
-    flex-wrap: wrap;
+  .value div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .result div {
+    display: flex;
+    width: 100%;
   }
 }
