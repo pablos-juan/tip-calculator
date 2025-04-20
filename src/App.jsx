@@ -100,7 +100,7 @@ export function App () {
           </article>
           <div className='buttons'>
             <button
-              className={values.length < 1 ? 'reset-min' : 'reset'}
+              className={values.bill !== 0 ? 'reset-min' : 'reset'}
               disabled={values.bill === 0 && values.tip === 0 && values.people === 0}
               onClick={() => {
                 updateValues({ name: 'value', value: -1 })
