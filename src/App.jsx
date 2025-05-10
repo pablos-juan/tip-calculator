@@ -5,6 +5,7 @@ import { PERCENTAGE } from './logic/constants'
 import { useValues } from './hooks/useValues'
 import './App.css'
 import { Favs } from './components/Favs'
+import { Banner } from './components/Banner'
 
 export function App () {
   const { updateValues, amount, total, values } = useValues()
@@ -48,6 +49,7 @@ export function App () {
 
   return (
     <main>
+      <Banner />
       <section className='calc'>
         <section className='form-sec'>
           <form>
